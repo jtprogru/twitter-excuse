@@ -13,7 +13,7 @@ import os
 
 
 # Get current working directory
-cwd = os.getcwd()
+cwd = os.path.dirname(os.path.abspath(__file__))
 # Log file name
 LOG_FILE_PATH = cwd + '/logs/info.log'
 
@@ -73,3 +73,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+invoking
