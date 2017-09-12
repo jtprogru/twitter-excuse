@@ -4,13 +4,15 @@
 # Simple Twitter posting excuse
 # https://jtprog.ru/
 
-import random
 import twitter
 import dotenv as d
 from pathlib import Path
 import logging
 import os
+import redis
+import random
 
+r = redis.StrictRedis(host='localhost', port=63799, db=0)
 
 # Get current working directory
 cwd = os.path.dirname(os.path.abspath(__file__))
@@ -46,23 +48,12 @@ def main():
         # Log errors
         logging.fatal(u'FATAL: {}'.format(e))
     # List of a reasons
-    reasons = [
-        'Много работы',
-        'Надо доделать компьютер сотруднику',
-        'Кто-то снова сломал сервер',
-        'У нас проверка',
-        'Я на совещании',
-        'Я на встрече',
-        'Ничего не успеваю',
-        'Я задерживаюсь в офисе',
-        'Я настраиваю новую систему',
-        'Буду поздно',
-    ]
+    reasons = r.get(random.randrange(0, 42388))
 
     try:
         # Send tweet
-        tweet = random.choice(reasons)
-        twit.statuses.update(status=tweet)
+        # tweet = random.choice(reasons)
+        twit.statuses.update(status=reasons[0:139])
         logging.info(u'INFO: {}'.format('Message send'))
     except Exception as e:
         # Log errors
