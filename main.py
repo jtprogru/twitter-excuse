@@ -9,10 +9,7 @@ import dotenv as d
 from pathlib import Path
 import logging
 import os
-import redis
-import random
-
-r = redis.StrictRedis(host='localhost', port=63799, db=0)
+import utils
 
 # Get current working directory
 cwd = os.path.dirname(os.path.abspath(__file__))
@@ -30,27 +27,22 @@ logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d]# \
 env = str(Path(__file__).parent / '.env')
 
 try:
-    TOKEN = d.get_key(env, 'TOKEN')
-    TOKEN_KEY = d.get_key(env, 'TOKEN_KEY')
-    CON_SEC = d.get_key(env, 'CON_SEC')
-    CON_SEC_KEY = d.get_key(env, 'CON_SEC_KEY')
+    TOKEN = d.get_variable(env, 'TOKEN')
+    TOKEN_KEY = d.get_variable(env, 'TOKEN_KEY')
+    CON_SEC = d.get_variable(env, 'CON_SEC')
+    CON_SEC_KEY = d.get_variable(env, 'CON_SEC_KEY')
 except Exception as e:
     # Log errors.
     logging.fatal(u'Can\'t get configuration from enviroment\n\nFATAL: {}'.format(e))
 
 
 def main():
-
     my_auth = twitter.OAuth(TOKEN, TOKEN_KEY, CON_SEC, CON_SEC_KEY)
+    # List of a reasons
+    reasons = utils.get_excuse()
+
     try:
         twit = twitter.Twitter(auth=my_auth)
-    except Exception as e:
-        # Log errors
-        logging.fatal(u'FATAL: {}'.format(e))
-    # List of a reasons
-    reasons = r.get(random.randrange(0, 42388))
-
-    try:
         # Send tweet
         # tweet = random.choice(reasons)
         twit.statuses.update(status=reasons[0:139])
