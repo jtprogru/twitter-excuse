@@ -1,11 +1,10 @@
 ### twitter-excuse
 
-Пишем рандомные отмазки в твиттер
+We write random excuse in Twitter
 
-"Отмазки" хранятся в Redis, который поднят на localhost'e в Docker
+"Excuse" is stored locally in file
 
-Для запуска на своей машине создайте файл .env рядом с файлом main.py;
-запишите в него:
+To run on your machine, create a .env file next to the main.py and write in this file:
 
 >TOKEN = "123456789-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
@@ -15,10 +14,8 @@
 
 >CON_SEC_KEY = "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
 
-Так же необходимо создать папку **./logs/** и в ней файл **info.log**.
+It is also necessary to create the folder **/logs/** and in this folder you must create a file **info.log**.
 
-Вы можете самостоятельно перенастроить систему логирования - она тут
-присутствует только для интереса и отладки.
+You can independently reconfigure the logging system. It's here is present only for debugging and my interest.
 
-Наполнение базы данных Redis "отмазками" или чем-либо еще зависит напрямую от вас.
-При желании можно создать дополнительную переменную **replics** и уже из нее через **random.choice()** выбирать "желаемую" отмазку
+Instead of excuses you can write anything, everything depends on your imagination. The variable **replic** is filled through the library with utilities, where it adds excuses and my hashtags. 

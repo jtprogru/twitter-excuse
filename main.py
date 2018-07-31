@@ -38,14 +38,13 @@ except Exception as e:
 
 def main():
     my_auth = twitter.OAuth(TOKEN, TOKEN_KEY, CON_SEC, CON_SEC_KEY)
-    # List of a reasons
-    reasons = utils.get_excuse()
+    # List of a reason's
+    reason = utils.get_excuse()
 
     try:
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
-        # tweet = random.choice(reasons)
-        twit.statuses.update(status=reasons[0:139])
+        twit.statuses.update(status=reason[0:139])
         logging.info(u'INFO: {}'.format('Message send'))
     except Exception as e:
         # Log errors
