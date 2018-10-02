@@ -4,17 +4,16 @@ from utils import get_excuse, get_hashtag
 
 class UtilsTestCase(unittest.TestCase):
 
-    @staticmethod
-    def test_returns_an_excuse():
+    def test_returns_an_excuse(self):
         assert isinstance(get_excuse(), str)
 
-    @staticmethod
-    def test_returns_an_hashtag():
+    def test_returns_an_hashtag(self):
         assert isinstance(get_hashtag(), str)
 
-    @staticmethod
-    def test_length_twitt():
-        assert len(get_excuse()) <= 140
+    def test_length_twitt(self):
+        resp = get_excuse()
+        self.assertTrue(len(resp) <= 140, 'INFO: Normal length of Twitter message')
+        self.assertFalse(len(resp) > 140, 'ERROR: Length of Twitter message is too long')
 
 
 if __name__ == '__main__':
