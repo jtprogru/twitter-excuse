@@ -10,6 +10,6 @@ def get_hashtag():
 
 
 def get_excuse():
-    res = random.choice(Excuses)
-    res += get_hashtag()
-    return res
+    resp = random.choice(Excuses)
+    resp += get_hashtag()
+    return resp

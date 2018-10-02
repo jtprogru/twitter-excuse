@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Copyright 2017 Savin (JTProg) Mihael
 # Simple Twitter posting excuse
@@ -45,7 +45,7 @@ def main():
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
         twit.statuses.update(status=reason[0:139])
-        logging.info(u'INFO: {}'.format('Message send'))
+        logging.info(u'INFO: {}'.format('Message \"' + reason + '\" send'))
     except Exception as e:
         # Log errors
         logging.fatal(u'FATAL: {}'.format(e))
