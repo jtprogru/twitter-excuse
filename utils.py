@@ -1,11 +1,13 @@
 import random
-from excuses.data import Excuses, Hashtag
+from excuses.data import Excuses, HTag, SpecialHTag
 
 
 def get_hashtag():
     ht = ''
-    for item in Hashtag:
+    for item in SpecialHTag:
         ht += ' ' + item
+    ht += ' ' + random.choice(HTag)
+    ht += ' ' + random.choice(HTag)
     return ht
 
 
