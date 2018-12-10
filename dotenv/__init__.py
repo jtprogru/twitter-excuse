@@ -1,11 +1,7 @@
 # encoding=UTF-8
 # Source from https://github.com/pedroburon/dotenv
 
-
-from __future__ import with_statement
-
-
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 
 class Dotenv(dict):
