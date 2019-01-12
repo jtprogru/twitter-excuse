@@ -6,7 +6,7 @@ SpecialHTag = [
 HTag = [
     '#sysodminium',
     '#сисодминиум',
-    '#sysdev2018',
+    '#sysdev2019',
     '#devops',
 ]
 

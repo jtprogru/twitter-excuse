@@ -33,10 +33,12 @@ try:
     CON_SEC_KEY = d.get_variable(env, 'CON_SEC_KEY')
 except Exception as e:
     # Log errors.
-    logging.fatal(u'Can\'t get configuration from enviroment\n\nFATAL: {}'.format(e))
+    logging.fatal(u'Can\'t get configuration from enviroment\n' +
+                  '\nFATAL: {}'.format(e))
 
 
 def main():
+    # Authorisation in Twitter
     my_auth = twitter.OAuth(TOKEN, TOKEN_KEY, CON_SEC, CON_SEC_KEY)
     # List of a reason's
     reason = utils.get_excuse()
@@ -45,7 +47,8 @@ def main():
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
         twit.statuses.update(status=reason[0:139])
-        logging.info(u'INFO: {}'.format('Message \"' + reason + '\" send'))
+        logging.info(u'INFO: {}'.format('Message \"' + 
+                                        reason[0:139] + '\" send'))
     except Exception as e:
         # Log errors
         logging.fatal(u'FATAL: {}'.format(e))
