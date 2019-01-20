@@ -1,3 +1,4 @@
+# coding=utf-8
 SpecialHTag = [
     '#jtprog',
     '#jtprogru',
