@@ -14,7 +14,7 @@ To run on your machine, create a *.env* file next to the *main.py* and write in 
 >
 >CON_SEC_KEY = "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
 
-It is also necessary to create the folder **/logs/** and in this folder you must create a file **info.log**.
+It is also necessary edit **LOG_FILE_PATH** and setup a file for log in global **/var/log/** folder.
 
 You can independently reconfigure the logging system. It's here is present only for debugging and my interest.
 
