@@ -20,7 +20,7 @@ logging.getLogger(__name__)
 # Logging configuration
 logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d]# \
 %(levelname)s [%(asctime)s]  %(message)s',
-                    level=logging.DEBUG,
+                    level=logging.INFO,
                     filename=LOG_FILE_PATH)
 
 # Twitter credential
