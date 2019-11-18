@@ -14,7 +14,7 @@ import utils
 # Get current working directory
 cwd = os.path.dirname(os.path.abspath(__file__))
 # Log file name
-LOG_FILE_PATH = '/var/log/pyproject/twitterbot.log'
+LOG_FILE_PATH = '/Users/jtprog/workplace/logs/twitterbot.log'
 
 logging.getLogger(__name__)
 # Logging configuration
