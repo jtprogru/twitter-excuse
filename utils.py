@@ -7,7 +7,7 @@ def get_hashtag():
     for item in SpecialHTag:
         ht += ' ' + item
     ht += ' ' + random.choice(HTag)
-    ht += ' ' + random.choice(HTag)
+#   ht += ' ' + random.choice(HTag)
     return ht
 
 

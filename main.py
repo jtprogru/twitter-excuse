@@ -5,7 +5,7 @@
 # https://jtprog.ru/
 
 import twitter
-import dotenv as d
+import dotenv
 from pathlib import Path
 import logging
 import os
@@ -27,10 +27,10 @@ logging.basicConfig(format=u'%(filename)s [LINE:%(lineno)d]# \
 env = str(Path(__file__).parent / '.env')
 
 try:
-    TOKEN = d.get_variable(env, 'TOKEN')
-    TOKEN_KEY = d.get_variable(env, 'TOKEN_KEY')
-    CON_SEC = d.get_variable(env, 'CON_SEC')
-    CON_SEC_KEY = d.get_variable(env, 'CON_SEC_KEY')
+    TOKEN = dotenv.get_variable(env, 'TOKEN')
+    TOKEN_KEY = dotenv.get_variable(env, 'TOKEN_KEY')
+    CON_SEC = dotenv.get_variable(env, 'CON_SEC')
+    CON_SEC_KEY = dotenv.get_variable(env, 'CON_SEC_KEY')
 except Exception as e:
     # Log errors.
     logging.fatal(u'Can\'t get configuration from enviroment\n' +
@@ -47,7 +47,7 @@ def main():
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
         twit.statuses.update(status=reason[0:139])
-        logging.info(u'INFO: {}'.format('Message \"' + 
+        logging.info(u'INFO: {}'.format('Message \"' +
                                         reason[0:139] + '\" send'))
     except Exception as e:
         # Log errors
@@ -58,3 +58,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
