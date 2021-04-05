@@ -6,6 +6,8 @@
 #
 attrs==20.3.0
     # via pytest
+autopep8==1.5.6
+    # via -r requirements.in
 flake8-colors==0.1.9
     # via -r requirements.in
 flake8==3.9.0
@@ -23,7 +25,9 @@ pluggy==0.13.1
 py==1.10.0
     # via pytest
 pycodestyle==2.7.0
-    # via flake8
+    # via
+    #   autopep8
+    #   flake8
 pyflakes==2.3.1
     # via flake8
 pyparsing==2.4.7
@@ -31,6 +35,8 @@ pyparsing==2.4.7
 pytest==6.2.3
     # via -r requirements.in
 toml==0.10.2
-    # via pytest
+    # via
+    #   autopep8
+    #   pytest
 twitter==1.18.0
     # via -r requirements.in

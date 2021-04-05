@@ -1,4 +1,5 @@
+autopep8
 flake8
 flake8-colors
-twitter
 pytest
+twitter
