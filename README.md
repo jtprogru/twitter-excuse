@@ -1,5 +1,7 @@
 ### twitter-excuse
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/CI?label=CI)
+
 We write random excuse in Twitter
 
 "Excuse" and "Hashtag" is stored locally in file [`/excuses/data.py`](/excuses/data.py)
