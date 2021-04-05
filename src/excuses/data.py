@@ -1,7 +1,7 @@
 # coding=utf-8
 SPECIALHASHTAGS = [
     '#jtprogru',
-    '#robotwi',
+    '#robotwit',
 ]
 
 HASHTAGS = [

@@ -7,7 +7,7 @@
 import twitter
 import logging
 import os
-import utils
+from utils import get_excuse
 
 
 class CustomFormatter(logging.Formatter):
@@ -19,7 +19,7 @@ class CustomFormatter(logging.Formatter):
     red = "\x1b[31;21m"
     bold_red = "\x1b[31;1m"
     reset = "\x1b[0m"
-    format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"
+    format = "%(asctime)s - %(name)s - %(levelname)s - (%(filename)s:%(lineno)d) - %(message)s"
 
     FORMATS = {
         logging.DEBUG: grey + format + reset,
@@ -39,12 +39,12 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 # create console handler with a higher log level
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+fh = logging.FileHandler(os.getenv("LOG_FILE_PATH", "twitterbot.log"))
+fh.setLevel(logging.DEBUG)
 
-ch.setFormatter(CustomFormatter())
+fh.setFormatter(CustomFormatter())
 
-logger.addHandler(ch)
+logger.addHandler(fh)
 
 
 def main() -> None:
@@ -55,20 +55,28 @@ def main() -> None:
     if TOKEN is None:
         # Log errors.
         logger.fatal("Can't get TOKEN from environment")
+    else:
+        logger.info("TOKEN is loaded from environment")
 
     # Authorisation in Twitter
     my_auth = twitter.OAuth(TOKEN, TOKEN_KEY, CON_SEC, CON_SEC_KEY)
-    # List of a reason's
-    reason = utils.get_excuse()
 
+    # get a reason's
+    reason = get_excuse()
+    logger.info(u"INFO: Status for Twitter is: {}".format(reason))
+
+    logger.info(u"INFO: {}".format("Try to login"))
     try:
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
-        twit.statuses.update(status=reason[0:139])
-        logging.info(u'INFO: {}'.format('Message \"' + reason[0:139] + '\" send'))
+        logger.info(u"INFO: {}".format("Try to send message"))
+        twit.statuses.update(status=reason)
+        logger.info(u"INFO: {}".format("Message ->"))
+        logger.info(u'MESSAGE: {}'.format(reason))
+        logger.info(u"INFO: {}".format("...is sended"))
     except Exception as e:
         # Log errors
-        logging.fatal(u'FATAL: {}'.format(e))
+        logger.fatal(u'FATAL: {}'.format(e))
 
 
 if __name__ == '__main__':
