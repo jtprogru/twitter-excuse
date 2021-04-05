@@ -2,19 +2,15 @@
 
 We write random excuse in Twitter
 
-"Excuse" and "Hashtag" is stored locally in file *./excuses/data.py*
+"Excuse" and "Hashtag" is stored locally in file [`/excuses/data.py`](/excuses/data.py)
 
-To run on your machine, create a *.env* file next to the *main.py* and write in this file:
-
->TOKEN = "123456789-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
->
->TOKEN_KEY = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
->
->CON_SEC = "aaaaaaaaaaaaaaaaaaaaaaaaa"
->
->CON_SEC_KEY = "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-
-It is also necessary edit **LOG_FILE_PATH** and setup a file for log in global **/var/log/** folder.
+To run on your machine, create a `.env` file next to the `main.py` and write in this file:
+```bash
+export TOKEN="123456789-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+export TOKEN_KEY="zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+export CON_SEC="aaaaaaaaaaaaaaaaaaaaaaaaa"
+export CON_SEC_KEY="qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+```
 
 You can independently reconfigure the logging system. It's here is present only for debugging and my interest.
 
