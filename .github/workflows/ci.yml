@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           make install-deps
-          
+
       - name: Lint with flake8
         run: |
           make lint

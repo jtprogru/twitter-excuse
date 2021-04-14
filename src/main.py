@@ -7,7 +7,7 @@
 import twitter
 import logging
 import os
-from utils import get_excuse
+from helpers import get_excuse
 
 
 class CustomFormatter(logging.Formatter):

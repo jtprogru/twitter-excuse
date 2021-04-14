@@ -1,1 +1,3 @@
-from .data import *
+from .data import SPECIALHASHTAGS, HASHTAGS, EXCUSES
+
+__all__ = ['SPECIALHASHTAGS', 'HASHTAGS', 'EXCUSES']

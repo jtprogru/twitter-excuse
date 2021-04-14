@@ -1,7 +1,5 @@
 # coding=utf-8
-import pytest
-
-from utils import get_excuse, get_hashtag
+from helpers import get_excuse, get_hashtag
 
 
 def test_get_hashtag():

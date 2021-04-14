@@ -1,5 +1,5 @@
 [flake8]
-ignore = E501,F401,F403,F812,H101,H202,H301,H306,H401,H403,H404,H405,H501,W391
+ignore = W391
 max-line-length = 119
 format = ${cyan}%(path)s${reset}:${yellow_bold}%(row)d${reset}:${green_bold}%(col)d${reset}: ${red_bold}%(code)s${reset} %(text)s
 
@@ -11,5 +11,4 @@ exclude =
       __pycache__,
       venv,
       env,
-      ; test*.py
-
+      test*.py
