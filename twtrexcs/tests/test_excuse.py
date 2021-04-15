@@ -1,5 +1,7 @@
 # coding=utf-8
-from helpers import get_excuse, get_hashtag
+
+
+from twtrexcs.helpers import get_excuse, get_hashtag
 
 
 def test_get_hashtag():

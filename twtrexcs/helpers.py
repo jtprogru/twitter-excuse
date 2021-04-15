@@ -1,6 +1,8 @@
 # coding=utf-8
+
+
 import random
-from excuses.data import EXCUSES, HASHTAGS, SPECIALHASHTAGS
+from twtrexcs.excuses.data import EXCUSES, HASHTAGS, SPECIALHASHTAGS
 
 
 def get_hashtag() -> str:
