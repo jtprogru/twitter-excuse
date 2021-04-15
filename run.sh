@@ -25,15 +25,15 @@ SCRIPT=$(basename "$0")
 LOG_FILE_NAME="twitterbot.log"
 
 echo "${SCRIPT} ${DATE} Change directory" >> ${MYLOGDIR}/${LOG_FILE_NAME}
-cd ${WPDIRPY}/twitter-excuse/
+cd ${WPDIRPY}/twitter-excuse/src/
 
 echo "${SCRIPT} ${DATE} Loading enviroment" >> ${MYLOGDIR}/${LOG_FILE_NAME}
 
-source ./venv/bin/activate
+source ../venv/bin/activate
 
 echo "${SCRIPT} ${DATE} Enviroment loaded"  >> ${MYLOGDIR}/${LOG_FILE_NAME}
 
-source ./.env
+source ../.env
 
 echo "${SCRIPT} ${DATE} RUN!" >> ${MYLOGDIR}/${LOG_FILE_NAME}
 

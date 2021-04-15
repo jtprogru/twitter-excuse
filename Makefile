@@ -16,10 +16,10 @@ dev-deps: deps
 	pip-compile dev-requirements.in
 
 lint:
-	flake8 --config ./.flake8 --show-source --statistics twtrexcs
+	flake8 --config ./.flake8 --show-source --statistics src
 
 test:
-	pytest -x
+	cd src && pytest -x
 
 twit:
 	run.sh
