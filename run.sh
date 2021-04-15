@@ -1,20 +1,20 @@
-#!/bin/bash - 
+#!/bin/bash -
 #===============================================================================
 #
 #          FILE: run.sh
-# 
-#         USAGE: ./run.sh 
-# 
+#
+#         USAGE: ./run.sh
+#
 #   DESCRIPTION: simple wrapper for my twitter autoposter
-# 
+#
 #       OPTIONS: ---
-#  REQUIREMENTS: ---
+#  REQUIREMENTS: see Makefile
 #          BUGS: ---
 #         NOTES: ---
 #        AUTHOR: MICHAEL SAVIN (jtprogru), <jtprogru@gmail.com>
-#  ORGANIZATION: 
+#  ORGANIZATION: SysOps
 #       CREATED: 04/15/2021 21:07
-#      REVISION: 
+#      REVISION:
 #===============================================================================
 
 set -e -o nounset                              # Treat unset variables as an error
