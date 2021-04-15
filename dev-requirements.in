@@ -3,3 +3,9 @@ coverage
 flake8
 flake8-colors
 pytest
+black
+mccabe
+mypy
+pylint
+tox
+tox-gh-actions

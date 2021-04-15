@@ -1,20 +1,30 @@
 # coding=utf-8
-
+"""
+Add help functions
+"""
 
 import random
 from twtrexcs.excuses.data import EXCUSES, HASHTAGS, SPECIALHASHTAGS
 
 
 def get_hashtag() -> str:
-    ht = ''
+    """
+    Create string with special and random hashtags
+    """
+
+    hash_tags = ""
     for item in SPECIALHASHTAGS:
-        ht += ' ' + item
-    ht += ' ' + random.choice(HASHTAGS)
-    return ht
+        hash_tags += " " + item
+    hash_tags += " " + random.choice(HASHTAGS)
+    return hash_tags
 
 
 def get_excuse() -> str:
-    resp = '🤖'
+    """
+    Create twit for post in Twitter
+    """
+
+    resp = "🤖"
     resp += random.choice(EXCUSES)
     resp += get_hashtag()
 

@@ -3,31 +3,41 @@
 # Copyright 2017 Savin (JTProg) Mihael
 # Simple Twitter posting excuse
 # https://jtprog.ru/
+"""
+Main module of twtrexcs
+"""
 
 
-import twitter
 import logging
 import os
+
+import twitter
+
 from twtrexcs.helpers import get_excuse
+
+
+class TwtrExcsException(Exception):
+    pass
 
 
 class CustomFormatter(logging.Formatter):
     """
     Colored Formatter for logging
     """
+
     grey = "\x1b[38;21m"
     yellow = "\x1b[33;21m"
     red = "\x1b[31;21m"
     bold_red = "\x1b[31;1m"
     reset = "\x1b[0m"
-    format = "%(asctime)s - %(name)s - %(levelname)s - (%(filename)s:%(lineno)d) - %(message)s"
+    format_string = "%(asctime)s - %(name)s - %(levelname)s - (%(filename)s:%(lineno)d) - %(message)s"
 
     FORMATS = {
-        logging.DEBUG: grey + format + reset,
-        logging.INFO: grey + format + reset,
-        logging.WARNING: yellow + format + reset,
-        logging.ERROR: red + format + reset,
-        logging.CRITICAL: bold_red + format + reset
+        logging.DEBUG: grey + format_string + reset,
+        logging.INFO: grey + format_string + reset,
+        logging.WARNING: yellow + format_string + reset,
+        logging.ERROR: red + format_string + reset,
+        logging.CRITICAL: bold_red + format_string + reset,
     }
 
     def format(self, record):
@@ -50,12 +60,12 @@ logger.addHandler(fh)
 
 def main() -> None:
     TOKEN = os.getenv("TOKEN", None)
-    TOKEN_KEY = os.getenv('TOKEN_KEY', None)
-    CON_SEC = os.getenv('CON_SEC', None)
-    CON_SEC_KEY = os.getenv('CON_SEC_KEY', None)
+    TOKEN_KEY = os.getenv("TOKEN_KEY", None)
+    CON_SEC = os.getenv("CON_SEC", None)
+    CON_SEC_KEY = os.getenv("CON_SEC_KEY", None)
     if TOKEN is None:
         # Log errors.
-        logger.fatal("Can't get TOKEN from environment")
+        logger.error("Can't get TOKEN from environment")
     else:
         logger.info("TOKEN is loaded from environment")
 
@@ -64,22 +74,21 @@ def main() -> None:
 
     # get a reason's
     reason = get_excuse()
-    logger.info(u"INFO: Status for Twitter is: {}".format(reason))
+    logger.info(u"INFO: Status for Twitter is: %s", reason)
 
-    logger.info(u"INFO: {}".format("Try to login"))
+    logger.info(u"INFO: %s", "Try to login")
     try:
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
-        logger.info(u"INFO: {}".format("Try to send message"))
+        logger.info(u"INFO: %s", "Try to send message")
         twit.statuses.update(status=reason)
-        logger.info(u"INFO: {}".format("Message ->"))
-        logger.info(u'MESSAGE: {}'.format(reason))
-        logger.info(u"INFO: {}".format("...is sended"))
-    except Exception as e:
+        logger.info(u"INFO: %s", "Message ->")
+        logger.info(u"MESSAGE: %s", reason)
+        logger.info(u"INFO: %s", "...is sended")
+    except TwtrExcsException as e:
         # Log errors
-        logger.fatal(u'FATAL: {}'.format(e))
+        logger.error(u"FATAL: %s", e)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-
