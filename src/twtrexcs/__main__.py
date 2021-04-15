@@ -4,6 +4,7 @@
 # Simple Twitter posting excuse
 # https://jtprog.ru/
 
+
 import twitter
 import logging
 import os
