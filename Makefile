@@ -33,7 +33,7 @@ test:  ## Run tests
 tox:   ## Run tox
 	python -m tox
 
-help: ## Show help message
+help:  ## Show help message
 	@IFS=$$'\n' ; \
 	help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##/:/'`); \
 	printf "%s\n\n" "Usage: make [task]"; \
@@ -51,4 +51,4 @@ help: ## Show help message
 	done
 
 twit:  ## Post in Twitter
-	run.sh
+	cd src && source ../.env && python3 -m twtrexcs
