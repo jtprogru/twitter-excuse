@@ -15,3 +15,6 @@ ENV/
 
 ### macOS template
 *.DS_Store
+
+# Logfiles
+twitterbot.log

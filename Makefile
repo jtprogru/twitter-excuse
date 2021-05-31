@@ -1,37 +1,29 @@
 .DEFAULT_GOAL := help
-.PHONY: install-dev-deps install-deps dev-deps deps help lint test tox
+.PHONY: install-dev-deps install-deps help lint test tox
 
 SHELL := /bin/bash
 
-install-dev-deps: dev-deps  ## Sync dev requirements
-	pip-sync requirements.txt dev-requirements.txt
+install-dev-deps: install-deps  ## Sync dev requirements
+	poetry install
 
-install-deps: deps  ## Sync requirements
-	pip-sync requirements.txt
-
-deps:  ## Compile requirements
-	pip install --upgrade pip pip-tools
-	pip-compile requirements.in
-
-dev-deps: deps  ## Compile dev requirements
-	pip-compile dev-requirements.in
-
+install-deps:  ## Sync requirements
+	poetry install --no-dev
 
 coverage:  ## Run tests with coverage
-	python -m coverage erase
-	python -m coverage run --include=src/twtrexcs/* -m pytest -ra
-	python -m coverage report -m
+	poetry run coverage erase
+	poetry run coverage run --include=src/twtrexcs/* -m pytest -ra
+	poetry run coverage report -m
 
 lint:  ## Lint and static-check
-	python -m flake8 src/twtrexcs/
-	python -m pylint --disable=C0305 --output-format=colorized src/twtrexcs/
-	python -m mypy src/twtrexcs/
+	poetry run flake8 src/twtrexcs/
+	poetry run pylint --disable=C0305 --output-format=colorized src/twtrexcs/
+	poetry run mypy src/twtrexcs/
 
 test:  ## Run tests
-	python -m pytest -x
+	poetry run pytest -x
 
 tox:   ## Run tox
-	python -m tox
+	poetry run tox
 
 help:  ## Show help message
 	@IFS=$$'\n' ; \
@@ -51,4 +43,4 @@ help:  ## Show help message
 	done
 
 twit:  ## Post in Twitter
-	cd src && source ../.env && python3 -m twtrexcs
+	source ./.env && poetry run twtrexcs

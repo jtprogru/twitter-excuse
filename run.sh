@@ -24,24 +24,24 @@ DATE=$(LC_ALL="en_US.UTF-8"  date +"%Y-%m-%dT%H:%M")
 SCRIPT=$(basename "$0")
 LOG_FILE_NAME="twitterbot.log"
 
-echo "${SCRIPT} ${DATE} Change directory" >> ${MYLOGDIR}/${LOG_FILE_NAME}
-cd ${WPDIRPY}/twitter-excuse/src/
+echo "${SCRIPT} ${DATE} Change directory" >> ${LOG_FILE_NAME}
+cd ${WPDIRPY}/twitter-excuse/
 
-echo "${SCRIPT} ${DATE} Loading enviroment" >> ${MYLOGDIR}/${LOG_FILE_NAME}
+echo "${SCRIPT} ${DATE} Loading enviroment" >> ${LOG_FILE_NAME}
 
-source ../venv/bin/activate
+# source ../venv/bin/activate
 
-echo "${SCRIPT} ${DATE} Enviroment loaded"  >> ${MYLOGDIR}/${LOG_FILE_NAME}
+source .env
 
-source ../.env
+echo "${SCRIPT} ${DATE} Enviroment loaded" >> ${LOG_FILE_NAME}
 
-echo "${SCRIPT} ${DATE} RUN!" >> ${MYLOGDIR}/${LOG_FILE_NAME}
+echo "${SCRIPT} ${DATE} RUN!" >> ${LOG_FILE_NAME}
 
-python3 -m twtrexcs
+poetry run twtrexcs
 
-echo "${SCRIPT} ${DATE} Done!" >> ${MYLOGDIR}/${LOG_FILE_NAME}
+echo "${SCRIPT} ${DATE} Done!" >> ${LOG_FILE_NAME}
 
-deactivate
+# deactivate
 
 exit 0
 

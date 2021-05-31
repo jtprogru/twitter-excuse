@@ -6,7 +6,7 @@ We write random excuse in Twitter
 
 ## Description
 
-`EXCUSES` and `HASHTAGS` is stored locally in file [`src/twtrexcs/excuses/data.py`](src/twtrexcs/excuses/data.py)
+`EXCUSES` and `HASHTAGS` is stored locally in file [`twtrexcs/excuses/data.py`](twtrexcs/excuses/data.py)
 
 To run on your machine, place a file `.env` in the root of repo and write in this file:
 ```bash
@@ -20,7 +20,7 @@ You can independently reconfigure the logging system. It's here is present only 
 
 Instead of excuses you can write anything, everything depends on your imagination. The variable `reason` is filled through the library with utilities, where it adds excuses and my hashtags. 
 
-Before running, please, edite a [`src/twtrexcs/excuses/data.py`](src/twtrexcs/excuses/data.py) for entering your excuses and hashtags.
+Before running, please, edite a [`twtrexcs/excuses/data.py`](twtrexcs/excuses/data.py) for entering your excuses and hashtags.
 
 ## Running
 ```bash

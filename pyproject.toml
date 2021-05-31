@@ -1,11 +1,29 @@
+[tool.poetry]
+name = "twtrexcs"
+version = "0.1.0"
+description = "We write random excuse in Twitter"
+authors = ["Michael Savin <jtprogru@gmail.com>"]
+license = "WTFPL"
+repository = "https://github.com/jtprogru/twitter-excuse"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+twitter = "1.18.0"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "1.5.6"
+coverage = "5.5"
+flake8 = "3.9.0"
+flake8-colors = "0.1.9"
+pytest = "6.2.3"
+black = "20.8b1"
+mccabe = "0.6.1"
+mypy = "0.812"
+pylint = "2.7.4"
+tox = "3.23.0"
+tox-gh-actions = "2.5.0"
+
 [build-system]
-requires = ["flit_core >=2,<4"]
-build-backend = "flit_core.buildapi"
-
-[tool.flit.metadata]
-module = "twtrexcs"
-author = "Michael Savin"
-author-email = "jtprogru@gmail.com"
-home-page = "https://github.com/jtprogru/twitter-excuse"
-description-file = "README.md"
-
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
