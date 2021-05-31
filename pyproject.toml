@@ -31,4 +31,4 @@ build-backend = "poetry.core.masonry.api"
 "Bug Tracker" = "https://github.com/jtprogru/twitter-excuse/issues"
 
 [tool.poetry.scripts]
-twtrexcs = 'twtrexcs:main'
+twit = 'twtrexcs:main'

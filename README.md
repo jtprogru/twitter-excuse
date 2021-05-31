@@ -1,6 +1,8 @@
-### twitter-excuse
+### twtrexcs
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/CI?label=CI) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/RELEASE?label=RELEASE)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/CI?label=CI)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/RELEASE?label=RELEASE)
+![GitHub](https://img.shields.io/github/license/jtprogru/twitter-excuse)
 
 We write random excuse in Twitter
 
@@ -26,12 +28,8 @@ Before running, please, edite a [`twtrexcs/excuses/data.py`](twtrexcs/excuses/da
 ```bash
 git clone git@github.com:jtprogru/twitter-excuse.git
 cd twitter-excuse
-python3 -m venv venv
-source venv/bin/activate
-make install-deps
-make twit
-# alternative run
-bash run.sh
+poetry install
+poetry twit
 ```
 
 ## Author
