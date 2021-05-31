@@ -10,8 +10,11 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: [ 3.9 ]
+        poetry-version: [ 1.0, 1.1.6 ]
+        os: [ ubuntu-20.04 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -19,13 +22,26 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Run image
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
       - name: Install dependencies
         run: |
-          make install-dev-deps
+          poetry install
 
       - name: Lint with flake8
         run: |
-          make lint
+          poetry run flake8 twtrexcs/
+          poetry run pylint --disable=C0305 --output-format=colorized twtrexcs/
+          poetry run mypy twtrexcs/
+
+      - name: Coverage
+        run: |
+          poetry run coverage erase
+          poetry run coverage run --include=twtrexcs/* -m pytest -ra
+          poetry run coverage report -m
+
       - name: Test with pytest
         run: |
-          make test
+          poetry run pytest -x
