@@ -9,7 +9,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-twitter = "1.18.0"
+twitter = "1.19.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "1.5.6"
