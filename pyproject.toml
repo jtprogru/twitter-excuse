@@ -5,6 +5,7 @@ description = "We write random excuse in Twitter"
 authors = ["Michael Savin <jtprogru@gmail.com>"]
 license = "WTFPL"
 repository = "https://github.com/jtprogru/twitter-excuse"
+homepage = "https://github.com/jtprogru/twitter-excuse"
 readme = "README.md"
 
 [tool.poetry.dependencies]
