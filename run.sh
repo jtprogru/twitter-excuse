@@ -37,7 +37,7 @@ echo "${SCRIPT} ${DATE} Enviroment loaded" >> ${LOG_FILE_NAME}
 
 echo "${SCRIPT} ${DATE} RUN!" >> ${LOG_FILE_NAME}
 
-poetry run twtrexcs
+poetry run twit
 
 echo "${SCRIPT} ${DATE} Done!" >> ${LOG_FILE_NAME}
 
