@@ -2,7 +2,9 @@
 __pycache__
 *$py.class
 .pytest_cache
-
+.coverage
+.tox
+.mypy_cache
 # dotenv
 .env
 
@@ -13,3 +15,6 @@ ENV/
 
 ### macOS template
 *.DS_Store
+
+# Logfiles
+twitterbot.log

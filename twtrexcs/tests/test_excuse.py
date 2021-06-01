@@ -14,5 +14,4 @@ def test_get_excuse():
 
 def test_length_twitt():
     resp = get_excuse()
-    assert len(resp) <= 140
-
+    assert len(resp) <= 280

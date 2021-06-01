@@ -1,12 +1,14 @@
-### twitter-excuse
+### twtrexcs
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/CI?label=CI)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jtprogru/twitter-excuse/RELEASE?label=RELEASE)
+![GitHub](https://img.shields.io/github/license/jtprogru/twitter-excuse)
 
 We write random excuse in Twitter
 
 ## Description
 
-`EXCUSES` and `HASHTAGS` is stored locally in file [`src/excuses/data.py`](src/excuses/data.py)
+`EXCUSES` and `HASHTAGS` is stored locally in file [`twtrexcs/excuses/data.py`](twtrexcs/excuses/data.py)
 
 To run on your machine, place a file `.env` in the root of repo and write in this file:
 ```bash
@@ -20,18 +22,14 @@ You can independently reconfigure the logging system. It's here is present only 
 
 Instead of excuses you can write anything, everything depends on your imagination. The variable `reason` is filled through the library with utilities, where it adds excuses and my hashtags. 
 
-Before running, please, edite a [`src/excuses/data.py`](src/excuses/data.py) for entering your excuses and hashtags.
+Before running, please, edite a [`twtrexcs/excuses/data.py`](twtrexcs/excuses/data.py) for entering your excuses and hashtags.
 
 ## Running
 ```bash
 git clone git@github.com:jtprogru/twitter-excuse.git
 cd twitter-excuse
-python3 -m venv venv
-source venv/bin/activate
-make install-deps
-make twit
-# alternative run
-bash run.sh
+poetry install
+poetry twit
 ```
 
 ## Author

@@ -2,31 +2,47 @@ name: CI
 
 'on':
   push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [ '*' ]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: [ 3.8, 3.9 ]
+        python-version: [ 3.9 ]
+        poetry-version: [ 1.1.6 ]
+        os: [ ubuntu-20.04 ]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Run image
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+
       - name: Install dependencies
         run: |
-          make install-dev-deps
+          poetry install
 
-      - name: Lint with flake8
+      - name: Linters
         run: |
-          make lint
+          poetry run flake8 twtrexcs/
+          poetry run pylint --disable=C0305 --output-format=colorized twtrexcs/
+          poetry run mypy twtrexcs/
+
+      - name: Coverage
+        run: |
+          poetry run coverage erase
+          poetry run coverage run --include=twtrexcs/* -m pytest -ra
+          poetry run coverage report -m
+
       - name: Test with pytest
         run: |
-          make test
+          poetry run pytest -x

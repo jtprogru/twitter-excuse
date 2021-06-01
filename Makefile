@@ -1,25 +1,46 @@
+.DEFAULT_GOAL := help
+.PHONY: install-dev-deps install-deps help lint test tox
 
 SHELL := /bin/bash
 
+install-dev-deps: install-deps  ## Sync dev requirements
+	poetry install
 
-install-dev-deps: dev-deps
-	pip-sync requirements.txt dev-requirements.txt
+install-deps:  ## Sync requirements
+	poetry install --no-dev
 
-install-deps: deps
-	pip-sync requirements.txt
+coverage:  ## Run tests with coverage
+	poetry run coverage erase
+	poetry run coverage run --include=src/twtrexcs/* -m pytest -ra
+	poetry run coverage report -m
 
-deps:
-	pip install --upgrade pip pip-tools
-	pip-compile requirements.in
+lint:  ## Lint and static-check
+	poetry run flake8 src/twtrexcs/
+	poetry run pylint --disable=C0305 --output-format=colorized src/twtrexcs/
+	poetry run mypy src/twtrexcs/
 
-dev-deps: deps
-	pip-compile dev-requirements.in
+test:  ## Run tests
+	poetry run pytest -x
 
-lint:
-	flake8 --config ./.flake8 --show-source --statistics twtrexcs
+tox:   ## Run tox
+	poetry run tox
 
-test:
-	pytest -x
+help:  ## Show help message
+	@IFS=$$'\n' ; \
+	help_lines=(`fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##/:/'`); \
+	printf "%s\n\n" "Usage: make [task]"; \
+	printf "%-20s %s\n" "task" "help" ; \
+	printf "%-20s %s\n" "------" "----" ; \
+	for help_line in $${help_lines[@]}; do \
+		IFS=$$':' ; \
+		help_split=($$help_line) ; \
+		help_command=`echo $${help_split[0]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
+		help_info=`echo $${help_split[2]} | sed -e 's/^ *//' -e 's/ *$$//'` ; \
+		printf '\033[36m'; \
+		printf "%-20s %s" $$help_command ; \
+		printf '\033[0m'; \
+		printf "%s\n" $$help_info; \
+	done
 
-twit:
-	run.sh
+twit:  ## Post in Twitter
+	source ./.env && poetry run twtrexcs
