@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "twtrexcs"
-version = "0.1.0"
+version = "2021.1.0"
 description = "We write random excuse in Twitter"
 authors = ["Michael Savin <jtprogru@gmail.com>"]
 license = "WTFPL"
