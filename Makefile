@@ -7,17 +7,17 @@ install-dev-deps: install-deps  ## Sync dev requirements
 	poetry install
 
 install-deps:  ## Sync requirements
-	poetry install --no-dev
+	poetry install --only main
 
 coverage:  ## Run tests with coverage
 	poetry run coverage erase
-	poetry run coverage run --include=src/twtrexcs/* -m pytest -ra
+	poetry run coverage run --include=twtrexcs/* -m pytest -ra
 	poetry run coverage report -m
 
 lint:  ## Lint and static-check
-	poetry run flake8 src/twtrexcs/
-	poetry run pylint --disable=C0305 --output-format=colorized src/twtrexcs/
-	poetry run mypy src/twtrexcs/
+	poetry run flake8 twtrexcs/
+	poetry run pylint --disable=C0305 --output-format=colorized twtrexcs/
+	poetry run mypy twtrexcs/
 
 test:  ## Run tests
 	poetry run pytest -x
@@ -43,4 +43,4 @@ help:  ## Show help message
 	done
 
 twit:  ## Post in Twitter
-	source ./.env && poetry run twtrexcs
+	source ./.env && poetry run twit

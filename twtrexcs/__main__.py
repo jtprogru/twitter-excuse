@@ -46,20 +46,20 @@ def main() -> None:
 
     # get a reason's
     reason = get_excuse()
-    logger.info(u"INFO: Status for Twitter is: %s", reason)
+    logger.info("INFO: Status for Twitter is: %s", reason)
 
-    logger.info(u"INFO: %s", "Try to login")
+    logger.info("INFO: %s", "Try to login")
     try:
         twit = twitter.Twitter(auth=my_auth)
         # Send tweet
-        logger.info(u"INFO: %s", "Try to send message")
+        logger.info("INFO: %s", "Try to send message")
         twit.statuses.update(status=reason)
-        logger.info(u"INFO: %s", "Message ->")
-        logger.info(u"MESSAGE: %s", reason)
-        logger.info(u"INFO: %s", "...is sended")
+        logger.info("INFO: %s", "Message ->")
+        logger.info("MESSAGE: %s", reason)
+        logger.info("INFO: %s", "...is sended")
     except TwtrExcsException as e:
         # Log errors
-        logger.error(u"FATAL: %s", e)
+        logger.error("FATAL: %s", e)
 
 
 if __name__ == "__main__":
